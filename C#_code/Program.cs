@@ -12,10 +12,13 @@ Console.Clear();
 string[] task = {"Написать", "программу,", "которая", "из", "имеющегося", "массива",
                  "строк", "формирует", "новый", "массив", "из", "строк,", "длина", 
                  "которых", "меньше,", "либо", "равна", "3", "символам."};
+string[] task2 = {"“1234”", "“1567”", "-2", "“computer science”"};
 
-Solution(task);
+WrongSolution(task);
+CorrectSolution(task2);
+CorrectSolution(task);
 
-void Solution(string[] array)
+void WrongSolution(string[] array)
 {
   byte size = (byte) new Random().Next(0, 4);
   string[] result = new string[size];
@@ -25,4 +28,21 @@ void Solution(string[] array)
       result[i] = array[index];
     } 
   Console.WriteLine("[" + String.Join(" ", array) + "]" + " -> " + "[" + String.Join(" ", result) + "]");
+}
+
+void CorrectSolution(string[] array)
+{ 
+  byte count = 0;
+  foreach(string el in array)
+      if(el.Length > 3) count++;
+  byte size = Convert.ToByte(array.Length - count);
+  string[] solution = new string[size];
+  byte index = 0;
+  for(byte i = 0; i < array.Length; i++)
+    if(array[i].Length < 4) 
+    {
+      solution[index] = array[i];
+      index++;
+    }
+  Console.WriteLine("[" + String.Join(" ", array) + "]" + " -> " + "[" + String.Join(" ", solution) + "]");
 }
